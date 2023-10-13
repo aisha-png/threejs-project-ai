@@ -1,9 +1,14 @@
+import Canvas from './canvas';
+import Customiser from './pages/Customiser';
+import Home from './pages/Home';
 
 function App() {
   return (
-    <div>
-      <h1 className="head-text">React app</h1>
-    </div>
+    <main className="app transition-all ease-in">
+      <Home />
+      <Canvas />
+      <Customiser/>
+    </main>
   )
 }
 
