@@ -21,7 +21,7 @@ const Customiser = () => {
   const [activeEditorTab, setActiveEditorTab]= useState("");
   const [activeFilterTab, setActiveFilterTab] = useState({
     logoShirt: true,
-    styleishShirt: false,
+    stylishShirt: false,
   });
   
   // show active content depending on the activeTab
@@ -29,16 +29,19 @@ const Customiser = () => {
     switch(activeEditorTab) {
       case "colorpicker":
         return <ColorPicker />
+        // break;
       case "filepicker":
         return <FilePicker 
           file={file}
           setFile={setFile}
           readFile={readFile}
         />
+        // break;
       case "aipicker":
         return <AIPicker />
       default:
         return null;
+        // break;
     }
   }
 
@@ -59,6 +62,7 @@ const Customiser = () => {
         break;
       case "stylishShirt":
         state.isFullTexture = !activeFilterTab[tabName];
+        break;
       default:
         state.isLogoTexture = true;
         state.isFullTexture = false;
@@ -120,8 +124,8 @@ const Customiser = () => {
                 key={tab.name}
                 tab={tab}
                 isFilterTab
-                isActiveTab=""
-                handleClick={() => {}}
+                isActiveTab={activeFilterTab[tab.name]}
+                handleClick={() => handleActiveFilterTab(tab.name)}
               />
                 ))}
 
