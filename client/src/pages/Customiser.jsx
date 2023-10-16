@@ -29,19 +29,35 @@ const Customiser = () => {
     switch(activeEditorTab) {
       case "colorpicker":
         return <ColorPicker />
-        // break;
       case "filepicker":
         return <FilePicker 
           file={file}
           setFile={setFile}
           readFile={readFile}
         />
-        // break;
       case "aipicker":
-        return <AIPicker />
+        return <AIPicker 
+          prompt={prompt}
+          setPrompt={setPrompt}
+          generatingImg={generatingImg}
+          handleSubmit={handleSubmit}
+        />
       default:
         return null;
-        // break;
+    }
+  }
+
+  const handleSubmit =async (type) =>{
+    if(!prompt) return alert("Please enter a prompt");
+
+    try {
+      // call backend to generate an Ai image
+
+    } catch (error){
+      alert(error)
+    } finally {
+      setGeneratingImg(false);
+      setActiveEditorTab("");
     }
   }
 
@@ -62,12 +78,20 @@ const Customiser = () => {
         break;
       case "stylishShirt":
         state.isFullTexture = !activeFilterTab[tabName];
-        // break;
       default:
         state.isLogoTexture = true;
         state.isFullTexture = false;
 
     }
+
+    // after setting the state, activeFilterTab updated
+
+    setActiveFilterTab((prevState) => {
+      return {
+        ...prevState,
+        [tabName]: !prevState[tabName]
+      }
+    })// btn can now turn on/off the logo on the shirt
   }
 
   const readFile =  (type) => {
