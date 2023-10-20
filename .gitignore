@@ -1,8 +1,10 @@
-# Ignore environment files
+
+server/.env
 .env
 
-# Ignore specific routes files
 server/routes/.env
 server/routes/dalle.routes.js
 
+server/node_modules
 node_modules
+dalle.routes.js
