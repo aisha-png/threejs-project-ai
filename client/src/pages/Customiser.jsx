@@ -52,7 +52,29 @@ const Customiser = () => {
 
     try {
       // call backend to generate an Ai image
+      setGeneratingImg(true);
 
+      const response = await fetch('http://localhost:8080/api/v1/dalle', {
+        method: 'POST',
+        headers: {
+          'Content-Type' : 'application/json'
+        },
+        body: JSON.stringify({
+          prompt,
+        })
+      })
+
+      if (!response.ok) {
+        throw new Error(`Failed to fetch. Status: ${response.status}`);
+      }
+
+      const data = await response.json();
+
+      if (!data.photo) {
+        throw new Error("Photo not found in response data");
+      }
+
+      handleDecals(type, `data:image/png;base64, ${data.photo}`)
     } catch (error){
       alert(error)
     } finally {
@@ -78,10 +100,11 @@ const Customiser = () => {
         break;
       case "stylishShirt":
         state.isFullTexture = !activeFilterTab[tabName];
+        break;
       default:
         state.isLogoTexture = true;
         state.isFullTexture = false;
-
+        break;
     }
 
     // after setting the state, activeFilterTab updated
