@@ -24,12 +24,12 @@ router.route('/').post(async (req, res) => {
       prompt,
       n: 1,
       size: '1024x1024',
-      response_format: 'url',
+      response_format: 'b64_json',
     });
 
-    const imageUrl = response.data.url;
+    const image = response.data[0].b64_json;
 
-    res.status(200).json({ photo: imageUrl });
+    res.status(200).json({ photo: image });
   } catch (error) {
     console.error(error);
     res.status(500).json({ message: "Something went wrong" });

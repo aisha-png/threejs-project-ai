@@ -64,15 +64,15 @@ const Customiser = () => {
         })
       })
 
-      if (!response.ok) {
-        throw new Error(`Failed to fetch. Status: ${response.status}`);
-      }
+      // if (!response.ok) {
+      //   throw new Error(`Failed to fetch. Status: ${response.status}`);
+      // }
 
       const data = await response.json();
 
-      if (!data.photo) {
-        throw new Error("Photo not found in response data");
-      }
+      // if (!data.photo) {
+      //   throw new Error("Photo not found in response data");
+      // }
 
       handleDecals(type, `data:image/png;base64, ${data.photo}`)
     } catch (error){
