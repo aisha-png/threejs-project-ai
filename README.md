@@ -1,4 +1,4 @@
-# Built an AI-Powered 3D Website Using React - Three JS Project
+# An AI-Powered 3D Website Using React - Three JS Project
 
 ![Screenshot 2023-10-21 at 22 31 04](https://github.com/aisha-png/threejs-project/assets/67974517/74bcc13f-6f7a-4364-ae32-938d7bcb2bb1)
 
@@ -29,11 +29,6 @@ Make sure you have Node.js and npm installed on your machine.
    ```bash
    git clone https://github.com/aisha-png/threejs-project.git
    ```
-   OR
-   ```bash
-   git clone git@github.com:aisha-png/threejs-project.git
-   ```
-
 2. **Navigate to the project directory:**
     ```bash
     cd threejs-project
